@@ -1,4 +1,4 @@
-package com.example.training
+package net.runsystem.training_member
 
 import io.flutter.embedding.android.FlutterActivity
 
