@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:training_member/app/data/repositories/member_repository.dart';
+
+import '../../../data/repositories/repositories.dart';
 
 class HomeController extends GetxController with StateMixin {
   final tabNumber = 0.obs;
@@ -28,20 +29,7 @@ class HomeController extends GetxController with StateMixin {
   }
 
   Future<void> fetchData() async {
-    isLoading.value = true;
-    if (tabNumber.value == 0) {
-      members.assignAll(await MemberRepository().getAllMember() ?? []);
-    } else {
-      members.assignAll(await MemberRepository().getPremiumMember() ?? []);
-    }
-    isLoading.value = false;
+    Repositories.member.getAllMember();
+    Repositories.member.getUser();
   }
-
-// void switchTab(int input) async {
-//   await fetchData();
-//   if (input != tabNumber.value) {
-//     tabNumber.value = input;
-//
-//   }
-// }
 }

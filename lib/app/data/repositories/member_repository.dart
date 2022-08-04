@@ -1,23 +1,19 @@
-import 'package:training_member/app/data/helpers/api_helper.dart';
+part of repositories;
 
-import '../models/member.dart';
+abstract class MemberBase {
+  Future<List<Member>?> getAllMember();
+  Future<void> getUser();
+}
 
-class MemberRepository {
-  Future<List<Member>?> getAllMember() async {
-    var jsons = await ApiHelper().getAll();
-    if (jsons != null) {
-      return jsons.map((json) => Member.fromJson(json)).toList();
-    } else {
-      return null;
-    }
-  }
+class MemberRepository implements MemberBase {
+  @override
+  Future<List<Member>?> getAllMember() => MemberProvider.getAllMember();
 
-  Future<List<Member>?> getPremiumMember() async {
-    var jsons = await ApiHelper().getPremium();
-    if (jsons != null) {
-      return jsons.map((json) => Member.fromJson(json)).toList();
-    } else {
-      return null;
-    }
+  @override
+  Future<void> getUser() {
+    // TODO: implement getUser
+    throw UnimplementedError();
   }
 }
+
+

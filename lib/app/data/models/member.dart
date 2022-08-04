@@ -11,14 +11,14 @@ class Member {
 
   Member(
       {this.name,
-        this.age,
-        this.bio,
-        this.position,
-        this.job,
-        this.company,
-        this.address,
-        this.isPremium,
-        this.avatar});
+      this.age,
+      this.bio,
+      this.position,
+      this.job,
+      this.company,
+      this.address,
+      this.isPremium,
+      this.avatar});
 
   Member.fromJson(Map<String, dynamic> json) {
     name = json['name'];

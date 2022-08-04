@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/constants/app_colors.dart';
 import '../../../data/constants/app_styles.dart';
+import '../../../data/constants/constants.dart';
 import '../controllers/home_controller.dart';
 
 class ItemMember extends StatelessWidget {
@@ -25,7 +25,7 @@ class ItemMember extends StatelessWidget {
             Expanded(
               flex: 1,
               child: CircleAvatar(
-                backgroundColor: AppColors.silver,
+                backgroundColor: Constants.colors.silver,
                 radius: 26,
                 backgroundImage: NetworkImage(controller
                         .members[index].avatar ??
@@ -106,7 +106,7 @@ class ItemMember extends StatelessWidget {
           height: 38,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              border: Border.all(width: 0.3, color: AppColors.cinnabar)),
+              border: Border.all(width: 0.3, color: Constants.colors.cinnabar)),
           child: Center(
             child: Text(
               controller.members[index].bio ?? '',

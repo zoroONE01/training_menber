@@ -1,43 +1,47 @@
 import 'package:dio/dio.dart';
 
+enum ApiMethod { get, post, put, delete }
+
 class ApiHelper {
+  ApiHelper._();
 
-  final _getAllOps = BaseOptions(
-      baseUrl: 'https://agrichapp.herokuapp.com',
-      connectTimeout: 3000,
-      receiveTimeout: 3000,
-      method: 'GET');
+  factory ApiHelper() => _instance;
+  static final ApiHelper _instance = ApiHelper._();
 
-  final _getPremiumOps = BaseOptions(
-      baseUrl: 'https://agrichapp.herokuapp.com',
-      connectTimeout: 3000,
-      receiveTimeout: 3000,
-      method: 'GET',
-      queryParameters: {'isPremium': 'true'});
+  static final Dio _dio = Dio()
+    ..options.baseUrl = ''
+    ..options.connectTimeout = 3000
+    ..options.receiveTimeout = 3000
+    ..interceptors.add(LogInterceptor());
 
-  Future<List<dynamic>?> getAll() async {
-    try {
-      var response = await Dio(_getAllOps).get('/members');
-      if (response.statusCode == 200) {
-        return response.data;
-      } else {
-        return null;
-      }
-    } catch (e) {
-      print(e);
-    }
+  static final httpMethods = {
+    ApiMethod.get: 'get',
+    ApiMethod.post: 'post',
+    ApiMethod.put: 'put',
+    ApiMethod.delete: 'delete',
+  };
+
+  static void setHeader() {}
+
+  static void setBaseUrl(String baseUrl) {
+    _dio.options.baseUrl = baseUrl;
   }
 
-  Future<List<dynamic>?> getPremium() async {
+  static Future<Response> request(
+    String path, {
+    ApiMethod method = ApiMethod.get,
+    Map<String, dynamic>? params,
+    data,
+  }) async {
     try {
-      var response = await Dio(_getPremiumOps).get('/members');
-      if (response.statusCode == 200) {
-        return response.data;
-      } else {
-        return null;
-      }
+      return _dio.request(path,
+          options: Options(
+            method: httpMethods[method],
+          ),
+          queryParameters: params,
+          data: data);
     } catch (e) {
-      print(e);
+      rethrow;
     }
   }
 }

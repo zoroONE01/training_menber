@@ -1,5 +1,12 @@
-class AppPaths{
+part of constants;
+
+class AppPaths {
   AppPaths._();
+
+  static final AppPaths _instance = AppPaths._();
+
+  factory AppPaths() => _instance;
+
   static const icAccount = 'assets/icons/account.svg';
   static const icClockGrey = 'assets/icons/clock_grey.svg';
   static const icClockOrange = 'assets/icons/clock_orange.svg';
@@ -15,5 +22,6 @@ class AppPaths{
   static const icSetting = 'assets/icons/setting.svg';
   static const icSpeaker = 'assets/icons/speaker.svg';
   static const icBack = 'assets/icons/back.svg';
-  static const icSportsAndCcompetition = 'assets/icons/sports_and_competition.svg';
+  static const icSportsAndCompetition =
+      'assets/icons/sports_and_competition.svg';
 }

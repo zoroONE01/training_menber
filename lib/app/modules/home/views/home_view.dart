@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../data/constants/app_colors.dart';
-import '../../../data/constants/app_paths.dart';
-import '../../../data/constants/app_strings.dart';
 import '../../../data/constants/app_styles.dart';
+import '../../../data/constants/constants.dart';
 import '../controllers/home_controller.dart';
 import 'item_member.dart';
 
@@ -15,11 +13,11 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.cultured2,
+      color: Constants.colors.cultured1,
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: AppColors.cultured2,
+            backgroundColor: Constants.colors.cultured1,
             elevation: 0,
             flexibleSpace: Align(
               alignment: Alignment.center,
@@ -42,7 +40,7 @@ class HomeView extends GetView<HomeController> {
           body: Column(
             children: [
               Container(
-                color: AppColors.platinum,
+                color: Constants.colors.platinum,
                 padding:
                     const EdgeInsets.symmetric(vertical: 3, horizontal: 11),
                 child: Row(
@@ -53,8 +51,8 @@ class HomeView extends GetView<HomeController> {
                         icon: SvgPicture.asset(AppPaths.icSearch),
                         onPressed: () {},
                       ),
-                      const Text(
-                        AppStrings.lbSearch,
+                      Text(
+                        Constants.strings.lbSearch,
                         style: AppStyles.lbSearch,
                       ),
                     ]),
@@ -74,9 +72,9 @@ class HomeView extends GetView<HomeController> {
                                 controller.fetchData();
                               }
                             },
-                            labelColor: AppColors.royalBlueDark,
+                            labelColor: Constants.colors.royalBlueDark,
                             labelStyle: AppStyles.lbSortEnable,
-                            unselectedLabelColor: AppColors.spanishGray,
+                            unselectedLabelColor: Constants.colors.spanishGray,
                             unselectedLabelStyle: AppStyles.lbSortDisable,
                             indicatorColor: Colors.transparent,
                             tabs: [
@@ -93,8 +91,8 @@ class HomeView extends GetView<HomeController> {
                                                 : AppPaths.icClockGrey),
                                       ),
                                     ),
-                                    const Text(
-                                      AppStrings.lbCLock,
+                                    Text(
+                                      Constants.strings.lbCLock,
                                     ),
                                   ],
                                 ),
@@ -112,15 +110,15 @@ class HomeView extends GetView<HomeController> {
                                                 : AppPaths.icMonarchyGrey),
                                       ),
                                     ),
-                                    const Text(
-                                      AppStrings.lbCLock,
+                                    Text(
+                                      Constants.strings.lbCLock,
                                     ),
                                   ],
                                 ),
                               )
                             ]),
                         Container(
-                          color: AppColors.prussianBlue50,
+                          color: Constants.colors.prussianBlue50,
                           height: 0.5,
                         ),
                         Expanded(
@@ -197,18 +195,24 @@ class BotNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.cultured1,
+      color: Constants.colors.cultured1,
       height: 70,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: const [
-          BotNavItem(label: AppStrings.lbHome, iconPath: AppPaths.icHome),
-          BotNavItem(label: AppStrings.lbAccount, iconPath: AppPaths.icAccount),
-          BotNavItem(label: AppStrings.lbSpeaker, iconPath: AppPaths.icSpeaker),
-          BotNavItem(label: AppStrings.lbEvent, iconPath: AppPaths.icEvent),
-          BotNavItem(label: AppStrings.lbMember, iconPath: AppPaths.icMember),
-          BotNavItem(label: AppStrings.lbMessage, iconPath: AppPaths.icMessage),
+        children: [
+          BotNavItem(
+              label: Constants.strings.lbHome, iconPath: AppPaths.icHome),
+          BotNavItem(
+              label: Constants.strings.lbAccount, iconPath: AppPaths.icAccount),
+          BotNavItem(
+              label: Constants.strings.lbSpeaker, iconPath: AppPaths.icSpeaker),
+          BotNavItem(
+              label: Constants.strings.lbEvent, iconPath: AppPaths.icEvent),
+          BotNavItem(
+              label: Constants.strings.lbMember, iconPath: AppPaths.icMember),
+          BotNavItem(
+              label: Constants.strings.lbMessage, iconPath: AppPaths.icMessage),
         ],
       ),
     );
@@ -229,7 +233,7 @@ class BotNavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Material(
-        color: AppColors.cultured1,
+        color: Constants.colors.cultured1,
         child: InkWell(
           onTap: () {},
           child: Column(children: [
