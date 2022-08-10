@@ -2,18 +2,15 @@ part of repositories;
 
 abstract class MemberBase {
   Future<List<Member>?> getAllMember();
-  Future<void> getUser();
+
+  Future<List<Member>?> getMemberPremium();
 }
 
 class MemberRepository implements MemberBase {
   @override
-  Future<List<Member>?> getAllMember() => MemberProvider.getAllMember();
+  Future<List<Member>?> getAllMember() => MemberProvider().getAllMember();
 
   @override
-  Future<void> getUser() {
-    // TODO: implement getUser
-    throw UnimplementedError();
-  }
+  Future<List<Member>?> getMemberPremium() =>
+      MemberProvider().getMemberPremium();
 }
-
-

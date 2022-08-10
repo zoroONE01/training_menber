@@ -9,10 +9,12 @@ class ApiHelper {
   static final ApiHelper _instance = ApiHelper._();
 
   static final Dio _dio = Dio()
-    ..options.baseUrl = ''
+    ..options.baseUrl = 'https://agrichapp.herokuapp.com'
     ..options.connectTimeout = 3000
     ..options.receiveTimeout = 3000
-    ..interceptors.add(LogInterceptor());
+    ..interceptors.add(
+      LogInterceptor(),
+    );
 
   static final httpMethods = {
     ApiMethod.get: 'get',

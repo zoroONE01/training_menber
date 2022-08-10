@@ -1,3 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'member.g.dart';
+
+@JsonSerializable(
+)
 class Member {
   String? name;
   int? age;
@@ -8,46 +14,27 @@ class Member {
   String? address;
   bool? isPremium;
   String? avatar;
+  String? thumb;
 
-  Member(
-      {this.name,
-      this.age,
-      this.bio,
-      this.position,
-      this.job,
-      this.company,
-      this.address,
-      this.isPremium,
-      this.avatar});
+  Member({
+    this.name,
+    this.age,
+    this.bio,
+    this.position,
+    this.job,
+    this.company,
+    this.address,
+    this.isPremium,
+    this.avatar,
+    this.thumb,
+  });
 
-  Member.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    age = json['age'];
-    bio = json['bio'];
-    position = json['position'];
-    job = json['job'];
-    company = json['company'];
-    address = json['address'];
-    isPremium = json['isPremium'];
-    avatar = json['avatar'];
-  }
+  factory Member.fromJson(Map<String, dynamic> json) => _$MemberFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = name;
-    data['age'] = age;
-    data['bio'] = bio;
-    data['position'] = position;
-    data['job'] = job;
-    data['company'] = company;
-    data['address'] = address;
-    data['isPremium'] = isPremium;
-    data['avatar'] = avatar;
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$MemberToJson(this);
 
   @override
   String toString() {
-    return 'Member{name: $name, age: $age, bio: $bio, position: $position, job: $job, company: $company, address: $address, isPremium: $isPremium, avatar: $avatar}';
+    return 'Member{name: $name, age: $age, bio: $bio, position: $position, job: $job, company: $company, address: $address, isPremium: $isPremium, avatar: $avatar,}';
   }
 }

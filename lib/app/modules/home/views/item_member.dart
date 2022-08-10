@@ -1,18 +1,14 @@
-import 'package:flutter/material.dart';
-
-import '../../../data/constants/app_styles.dart';
-import '../../../data/constants/constants.dart';
-import '../controllers/home_controller.dart';
+part of member_list;
 
 class ItemMember extends StatelessWidget {
   const ItemMember({
     Key? key,
-    required this.controller,
-    this.index,
+    required this.member,
+    required this.index,
   }) : super(key: key);
 
-  final HomeController controller;
-  final index;
+  final Member member;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +21,8 @@ class ItemMember extends StatelessWidget {
             Expanded(
               flex: 1,
               child: CircleAvatar(
-                backgroundColor: Constants.colors.silver,
                 radius: 26,
-                backgroundImage: NetworkImage(controller
-                        .members[index].avatar ??
+                backgroundImage: NetworkImage(member.avatar ??
                     'https://en.m.wikipedia.org/wiki/File:Sample_User_Icon.png'),
               ),
             ),
@@ -43,17 +37,24 @@ class ItemMember extends StatelessWidget {
                       Flexible(
                         flex: 3,
                         child: Text(
-                          controller.members[index].name ?? '',
+                          member.name ?? '',
                           maxLines: 1,
-                          style: AppStyles.name,
+                          style: context.textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12,
+                            color: context.colors.onSecondaryContainer,
+                          ),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       Flexible(
                         flex: 1,
                         child: Text(
-                          '${controller.members[index].age}歳',
-                          style: AppStyles.age,
+                          '${member.age}歳',
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: context.colors.onInverseSurface,
+                            fontSize: 10,
+                          ),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                         ),
@@ -66,17 +67,23 @@ class ItemMember extends StatelessWidget {
                       Flexible(
                         flex: 1,
                         child: Text(
-                          controller.members[index].position ?? '',
+                          member.position ?? '',
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
-                          style: AppStyles.body1,
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: context.colors.onSurfaceVariant,
+                            fontSize: 10,
+                          ),
                         ),
                       ),
                       Flexible(
                         flex: 1,
                         child: Text(
-                          controller.members[index].job ?? '',
-                          style: AppStyles.body2,
+                          member.job ?? '',
+                          style: context.textTheme.bodyMedium?.copyWith(
+                            color: context.colors.inversePrimary,
+                            fontSize: 10,
+                          ),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                         ),
@@ -84,14 +91,20 @@ class ItemMember extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    controller.members[index].company ?? '',
-                    style: AppStyles.body2,
+                    member.company ?? '',
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: context.colors.inversePrimary,
+                      fontSize: 10,
+                    ),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
                   Text(
-                    controller.members[index].address ?? '',
-                    style: AppStyles.body1,
+                    member.address ?? '',
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: context.colors.onSurfaceVariant,
+                      fontSize: 10,
+                    ),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
@@ -105,13 +118,21 @@ class ItemMember extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           height: 38,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(width: 0.3, color: Constants.colors.cinnabar)),
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              width: 0.3,
+              color: context.colors.secondary,
+            ),
+          ),
           child: Center(
             child: Text(
-              controller.members[index].bio ?? '',
+              member.bio ?? '',
               maxLines: 2,
-              style: AppStyles.bio,
+              style: context.textTheme.bodyMedium?.copyWith(
+                color: context.colors.onSurfaceVariant,
+                fontWeight: FontWeight.w700,
+                fontSize: 10,
+              ),
               overflow: TextOverflow.ellipsis,
             ),
           ),

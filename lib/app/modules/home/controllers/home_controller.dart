@@ -1,16 +1,17 @@
 import 'package:get/get.dart';
+import 'package:training_member/app/data/models/member.dart';
 
 import '../../../data/repositories/repositories.dart';
 
 class HomeController extends GetxController with StateMixin {
   final tabNumber = 0.obs;
-  final members = [].obs;
+  final members = <Member>[].obs;
+  final membersPremium = <Member>[].obs;
+  final toDarkMode = false.obs;
 
-  // final silver = <Member>[].obs;
-  // final premium = <Member>[].obs;
-  final isLoading = false.obs;
+  // final themeMode = Brightness.light.obs;
 
-  static HomeController get to => Get.find();
+  // static HomeController get to => Get.find();
 
   @override
   void onInit() async {
@@ -29,7 +30,7 @@ class HomeController extends GetxController with StateMixin {
   }
 
   Future<void> fetchData() async {
-    Repositories.member.getAllMember();
-    Repositories.member.getUser();
+    members.value = await Repositories.member.getAllMember() ?? [];
+    membersPremium.value = await Repositories.member.getMemberPremium() ?? [];
   }
 }
